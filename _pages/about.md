@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a Master student in the [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). I am a member of **SICDP**(Lab of **S**ocial **I**ntelligence and **C**omplex **D**ata **P**rocessing) and am supervised by [Prof. Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/7). My research interests  lie in :
+I am a Master student in the [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). Also I am a member of **SICDP**(Lab of **S**ocial **I**ntelligence and **C**omplex **D**ata **P**rocessing) and am supervised by [Prof. Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/7). My research interests  lie in :
   - Natural Language Processing (NLP)
   - Data Mining
   - Large Language Models (LLMs) and practical methods using LLMs
@@ -36,7 +36,7 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 
 # 🔥 News
 - *2023.12*: &nbsp;🎉🎉 One paper had subbmitted to **NAACL 2024**. 
-- *2023.06*: &nbsp;🎉🎉 We have held the  third CCAC successfully at Xi'an Jiaotong Unvieristy.
+- *2023.06*: &nbsp;🎉🎉 We have held the  third [CCAC](https://gr.xjtu.edu.cn/en/web/raoyuan/7?p_p_id=cn_edu_xjtu_news_NewsPortlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_cn_edu_xjtu_news_NewsPortlet_mvcRenderCommandName=%2Fnews%2Fview_news&_cn_edu_xjtu_news_NewsPortlet_redirect=%2Fen%2Fweb%2Fraoyuan%2F7&_cn_edu_xjtu_news_NewsPortlet_newsId=15210107) successfully at Xi'an Jiaotong Unvieristy.
 
 # 📝 Publications 
 
