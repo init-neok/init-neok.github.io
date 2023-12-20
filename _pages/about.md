@@ -54,7 +54,7 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 - [coming sonn](https://github.com)
 
 # 🎖 Honors and Awards
-- *2021.10* Second Scholarship of Yunan University.
+- *2021.10* Second Scholarship of Yunnan University.
 - *2021.09* Second Prize of the 2021 National Graduate Mathematical Contest in Modeling. 
 
 # 📖 Educations
