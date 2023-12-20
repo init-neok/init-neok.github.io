@@ -58,8 +58,8 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 - *2021.09* Second Prize of the 2021 National Graduate Mathematical Contest in Modeling. 
 
 # 📖 Educations
-- *2022.08 - now*     Xi'an Jiaotong University, China. 
-- *2018.09 - 2022.06* Yunan University, China.
+- *2022.08 -     now* Xi'an Jiaotong University, China. 
+- *2018.09 - 2022.06* Yunnan University, China.
 
 # 💬 Invited Talks
 - None for now
