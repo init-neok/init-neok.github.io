@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a Master student in the [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). I am a member of **SICDP**(Lab of **S**ocial **I**ntelligence and **C**omplexity **D**ata **P**rocessing) and am supervised by [Prof. Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/7). My research interests  lie in :
+I am a Master student in the [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). I am a member of **SICDP**(Lab of **S**ocial **I**ntelligence and **C**omplex **D**ata **P**rocessing) and am supervised by [Prof. Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/7). My research interests  lie in :
   - Natural Language Processing (NLP)
   - Data Mining
   - Large Language Models (LLMs) and practical methods using LLMs
@@ -28,6 +28,7 @@ I am a Master student in the [Xi'an Jiaotong University](http://en.xjtu.edu.cn/)
 - Additional Interests:
   - Data Visualization
   - Human-Computer Interaction
+
 Recently, I am working on the research of  in-context-learning and apply it for fact-checking and attending a competition of rumor detection.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
