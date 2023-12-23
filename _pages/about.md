@@ -17,11 +17,11 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a Master student in the [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). Also I am a member of **SICDP**(Lab of **S**ocial **I**ntelligence and **C**omplex **D**ata **P**rocessing) and am supervised by [Prof. Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/7). My research interests  lie in :
+I am a Master student in [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). Also I am a member of **SICDP**(Lab of **S**ocial **I**ntelligence and **C**omplex **D**ata **P**rocess) and am supervised by [Prof. Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/7). My research interests  lie in :
   - Natural Language Processing (NLP)
   - Data Mining
   - Large Language Models (LLMs) and practical methods using LLMs
-  - Specific interests include Prompt Learning, In-context Learning, Prarameter Efficient Fine-tuning(PEFT), etc.
+  - Specific interests include Prompt Learning, In-context Learning, Prarameter Efficient Fine-tuning(PEFT),, etc.
   - Fact-checking
   - Knowledge Graph
   - Graph Neural Network
@@ -61,8 +61,8 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 - *2021.09* Second Prize of the 2021 National Graduate Mathematical Contest in Modeling. 
 
 # 📖 Educations
-- *2022.08 -     now* Xi'an Jiaotong University, China. 
-- *2018.09 - 2022.06* Yunnan University, China.
+- *2022.08 -     now* *Software Engineering*, Xi'an Jiaotong University, China. 
+- *2018.09 - 2022.06* *Information and Computational Science*, Yunnan University, China.
 
 # 💬 Invited Talks
 - None for now
