@@ -35,6 +35,7 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 
 
 # 🔥 News
+- *2023.12*: &nbsp;🎉🎉 🏆🏆we won the finalist of **Rumor Detection on socical media**(1/300+).
 - *2023.12*: &nbsp;🎉🎉 One paper had subbmitted to **NAACL 2024**. 
 - *2023.06*: &nbsp;🎉🎉 We have held the  third [CCAC](http://www.ccac2023.cn/) successfully at Xi'an Jiaotong Unvieristy.
 
@@ -54,6 +55,8 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 - [coming sonn](https://github.com)
 
 # 🎖 Honors and Awards
+- *2023.12* Finalist of AI challege Algorithm which held by People(20000RMB). 
+- *2022.06* Excellent graduate of Yunnan University.
 - *2021.10* Second Scholarship of Yunnan University.
 - *2021.09* Second Prize of the 2021 National Graduate Mathematical Contest in Modeling. 
 
