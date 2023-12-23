@@ -38,6 +38,7 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 - *2023.12*: &nbsp;🎉🎉 We won the finalist🏆🏆🏆 of **Rumor Detection on socical media**(1/300+).
   <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NLP</div><img src='images/paper_demo.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="2">
+
 - *2023.12*: &nbsp;🎉🎉 One paper had subbmitted to **NAACL 2024**. 
 - *2023.06*: &nbsp;🎉🎉 We have held the  third [CCAC](http://www.ccac2023.cn/) successfully at Xi'an Jiaotong Unvieristy.
 
