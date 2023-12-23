@@ -36,6 +36,8 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 
 # 🔥 News
 - *2023.12*: &nbsp;🎉🎉 We won the finalist🏆🏆🏆 of **Rumor Detection on socical media**(1/300+).
+  <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NLP</div><img src='images/paper_demo.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
 - *2023.12*: &nbsp;🎉🎉 One paper had subbmitted to **NAACL 2024**. 
 - *2023.06*: &nbsp;🎉🎉 We have held the  third [CCAC](http://www.ccac2023.cn/) successfully at Xi'an Jiaotong Unvieristy.
 
@@ -44,7 +46,7 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NLP</div><img src='images/paper_demo.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Coming soon](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+[Coming soon]
 
 <!-- **Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun -->
 [**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
