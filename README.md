@@ -1,3 +1,15 @@
+> [!IMPORTANT]
+> 
+> **我正在寻求一个研究型实习的就读机会，如果您对我有兴趣可以发邮件给我: <a href = "mailto: neok_zkn@stu.xjtu.edu.cn">neok_zkn@stu.xjtu.edu.cn</a>**
+> > I am seeking an opportunity to intern for research. If you are interested in my profile, please email me at: neok_zkn@stu.xjtu.edu.cn
+
+<!--
+> [!IMPORTANT]
+> 
+> Welcome to join [🥝QiyiGuo Research Group](https://papaya-gumdrop-233639.netlify.app/), We are dedicated to building safe, reliable, and practical visual and language AI models to serve society.
+-->
+
+
 * You can assess my page here: [init-neok.github.io](https://init-neok.github.io/)
 ---
 <h1 align="center">

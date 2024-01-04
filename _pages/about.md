@@ -29,7 +29,7 @@ I am a Master student in [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). Al
   - Data Visualization
   - Human-Computer Interaction
 
-Recently, I am working on the research of  in-context-learning and apply it for fact-checking and attending a competition of rumor detection.
+Recently, I am working on the research of  in-context-learning and apply it for fact-checking. At the same time, I am seeking an opportunity to intern for research. If you are interested in my profile, please email me at: neok_zkn@stu.xjtu.edu.cn
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
