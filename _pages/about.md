@@ -23,13 +23,14 @@ I am a Master student in [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). Al
   - ![Static Badge](https://img.shields.io/badge/Data_Mining-8A2BE2?style=plastic)
 
   -  ![Static Badge](https://img.shields.io/badge/Large_Language_Models-LLMs-blue) and practical methods using LLMs
-  - Specific interests include ![Static Badge](https://img.shields.io/badge/Prompt_Learning-green?style=plastic), ![Static Badge](https://img.shields.io/badge/In%20context%20Learning-ICL-A9A9A9?style=plastic),![Static Badge](https://img.shields.io/badge/Prarameter%20Efficient%20Fine%20tuning-PEFT-FFDAB9?style=plastic),etc.
+  - Specific interests include ![Static Badge](https://img.shields.io/badge/Prompt_Learning-green?style=plastic), ![Static Badge](https://img.shields.io/badge/In%20context%20Learning-ICL-A9A9A9?style=plastic),![Static Badge](https://img.shields.io/badge/Prarameter%20Efficient%20Fine%20tuning-PEFT-FFDAB9?style=plastic)
   - ![Static Badge](https://img.shields.io/badge/Fact%20checking-EEE8AA?style=plastic)
   - ![Static Badge](https://img.shields.io/badge/Knowledge%20Graph-KG-006400?style=plastic)
   - ![Static Badge](https://img.shields.io/badge/Graph%20Neural%20Network-GNN-20B2AA?style=plastic)
 - Additional Interests:
   - ![Static Badge](https://img.shields.io/badge/Data%20Visualization-4B0082?style=flat-square&logo=npm)
   - ![Static Badge](https://img.shields.io/badge/Human%20Computer%20Interaction-HCI-8A2BE2?style=flat&logo=dependlab&color=hex)
+
 Feel free to contact me if you have any questions. <a href = "mailto: neok_zkn@stu.xjtu.edu.cn">neok_zkn@stu.xjtu.edu.cn</a>
 &nbsp;
 Recently, I am working on the research of  in-context-learning and apply it for fact-checking. 
@@ -77,3 +78,8 @@ At the same time, I am seeking an opportunity to intern for research. If you are
 
 # 💻 Internships
 - None for now
+
+# Visitors Count <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
+<p align="center">
+  <img src="https://profile-counter.glitch.me/init-neok/count.svg"/>
+</p>
