@@ -22,7 +22,7 @@ I am a Master student in [Xi'an Jiaotong University](http://en.xjtu.edu.cn/). Al
 
   - ![Static Badge](https://img.shields.io/badge/Data_Mining-8A2BE2?style=plastic)
 
-  - ![LLMs](https://img.shields.io/badge/-LLMs--yellowgreen) Large Language Models (LLMs) and practical methods using LLMs
+  -  ![Static Badge](https://img.shields.io/badge/Large_Language_Models-LLMs-blue) and practical methods using LLMs
   - Specific interests include ![Static Badge](https://img.shields.io/badge/Prompt_Learning-green?style=plastic), ![Static Badge](https://img.shields.io/badge/In%20context%20Learning-ICL-A9A9A9?style=plastic),![Static Badge](https://img.shields.io/badge/Prarameter%20Efficient%20Fine%20tuning-PEFT-FFDAB9?style=plastic),etc.
   - ![Static Badge](https://img.shields.io/badge/Fact%20checking-EEE8AA?style=plastic)
   - ![Static Badge](https://img.shields.io/badge/Knowledge%20Graph-KG-006400?style=plastic)
