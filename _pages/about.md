@@ -38,8 +38,8 @@ Recently, I am working on the research of  in-context-learning and apply it for 
 At the same time, I am seeking an opportunity to intern for research. If you are interested in my profile, please email me at: <a href = "mailto: neok_zkn@stu.xjtu.edu.cn">neok_zkn@stu.xjtu.edu.cn</a>
 <p align="center">
 <img src="https://capsule-render.vercel.app/api?type=shark&height=30&section=footer&reversal=false&color=0:b579da,100:79da7f">
-<img src="https://raw.githubusercontent.com/trinib/trinib/82213791fa9ff58d3ca768ddd6de2489ec23ffca/images/footer.svg" width="100%">
 </p>
+
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
 
@@ -82,4 +82,7 @@ At the same time, I am seeking an opportunity to intern for research. If you are
 # <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> Visitors Count 
 <p align="center">
   <img src="https://profile-counter.glitch.me/init-neok/count.svg"/>
+</p>
+<p align="center">
+<img src="https://raw.githubusercontent.com/trinib/trinib/82213791fa9ff58d3ca768ddd6de2489ec23ffca/images/footer.svg" width="100%">
 </p>
