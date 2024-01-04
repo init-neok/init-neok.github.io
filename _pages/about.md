@@ -79,7 +79,7 @@ At the same time, I am seeking an opportunity to intern for research. If you are
 # 💻 Internships
 - None for now
 
-# Visitors Count <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
+# <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> Visitors Count 
 <p align="center">
   <img src="https://profile-counter.glitch.me/init-neok/count.svg"/>
 </p>
