@@ -3,6 +3,16 @@
 > **我正在寻求一个研究型实习的就读机会，如果您对我有兴趣可以发邮件给我: <a href = "mailto: neok_zkn@stu.xjtu.edu.cn">neok_zkn@stu.xjtu.edu.cn</a>**
 > > I am seeking an opportunity to intern for research. If you are interested in my profile, please email me at: neok_zkn@stu.xjtu.edu.cn
 
+<p align="center">
+  <p align="center">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<a href="https://www.wangrs.co/"><img src="./imags/wrs_mpu.png" align="bottom" width="500px"/></a>
+</p>
+  <h3 align="center">郑柯泞｜KENING Zheng <img src="./resources/Hi.gif" width="29px"> </h3>
+ <!-- <h5 align="center">💻功不唐捐🎨</h5> -->
+  <h5 align="center">💻Doing everything🎨 never wasted</h5>
+</p>
+
 <!--
 > [!IMPORTANT]
 > 
