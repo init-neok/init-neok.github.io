@@ -6,9 +6,8 @@
 <p align="center">
   <p align="center">
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-<a href="https://www.wangrs.co/"><img src="./images/wrs_mpu.png" align="bottom" width="500px"/></a>
 </p>
-  <h3 align="center">郑柯泞｜KENING Zheng <img src="./resources/Hi.gif" width="29px"> </h3>
+  <h3 align="center">郑柯泞｜KENING Zheng <img src="./images/Hi.gif" width="29px"> </h3>
  <!-- <h5 align="center">💻功不唐捐🎨</h5> -->
   <h5 align="center">💻Doing everything🎨 never wasted</h5>
 </p>
