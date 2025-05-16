@@ -43,7 +43,7 @@ repo_trophies:
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -51,9 +51,9 @@ rss_icon: true
 
 navbar_fixed: true
 footer_fixed: true
-search_enabled: true
+search_enabled: false
 socials_in_search: true
-posts_in_search: true
+posts_in_search: false
 bib_search: true
 
 # Dimensions
@@ -145,15 +145,15 @@ newsletter:
 # Collections
 # -----------------------------------------------------------------------------
 
-collections:
-  books:
-    output: true
-  news:
-    defaults:
-      layout: post
-    output: true
-  projects:
-    output: true
+# collections:
+#   books:
+#     output: true
+#   news:
+#     defaults:
+#       layout: post
+#     output: true
+#   projects:
+#     output: true
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -195,6 +195,20 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
+  - _projects/
+  - _news/
+  - _bibliography/
+  - _posts/
+  - _pages/projects.md
+  - _pages/publications.md
+  - _includes/selected_papers.liquid
+  - _includes/projects.liquid
+  - _includes/news.liquid
+  - _includes/latest_posts.liquid
+  - _layouts/bib.liquid
+  - _plugins/google-scholar-citations.rb
+  - _plugins/hide-custom-bibtex.rb
+  - _plugins/inspirehep-citations.rb
 keep_files:
   - CNAME
   - .nojekyll
