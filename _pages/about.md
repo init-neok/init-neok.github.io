@@ -27,6 +27,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Ph.D. student in Computer Science at the University of Illinois, Chicago. My advisor is [Philip S. Yu](https://cs.uic.edu/profiles/philip-yu/). I collaborate closely with Prof. [Xuming Hu](https://xuminghu.github.io/) from the Hong Kong University of Science and Technology (Guangzhou).
+I am a Ph.D. student in Computer Science at the University of Illinois at Chicago. My advisor is [Philip S. Yu](https://cs.uic.edu/profiles/philip-yu/). I collaborate closely with Prof. [Xuming Hu](https://xuminghu.github.io/) from the Hong Kong University of Science and Technology (Guangzhou).
 
 Before that, I received my master's degree in 2025 from Xi'an Jiaotong University under supervision with Prof. [Yuan Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/3) and my bachelor's degree in 2022 from Yunnan University.
