@@ -244,10 +244,11 @@ ul.task-list input[type="checkbox"] {
 // Navbar customization
 
 .navbar {
-  box-shadow: none;
-  border-bottom: 1px solid var(--global-divider-color);
-  background-color: var(--global-bg-color);
-  opacity: 0.95;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
 .navbar .dropdown-menu {
@@ -1416,4 +1417,118 @@ figure.cover {
   a.cover-link:hover {
     color: #23212d !important;
   }
+}
+
+/*******************************************************************************
+ * Apple-inspired design overrides
+ ******************************************************************************/
+
+// Typography refinements
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+// Smooth link transitions
+a, table.table a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+// Glass-morphism cards
+.card {
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover, &.hoverable:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+// Blog post list styling
+.post-list {
+  li {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Featured posts glass cards
+.featured-posts .card {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+// Navbar nav-link smooth transitions
+.navbar.navbar-light .navbar-nav .nav-item .nav-link {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.navbar.navbar-light .navbar-nav .nav-item.active > .nav-link {
+  opacity: 1;
+}
+
+// Profile section refinement
+.profile {
+  .address {
+    font-weight: 300;
+    color: var(--global-text-color-light);
+  }
+}
+
+// News/announcements cards
+.news {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+// Header bar for blog
+.header-bar {
+  h1 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    font-weight: 300;
+    color: var(--global-text-color-light);
+  }
+}
+
+// Tag/category pills
+.tag-category-list {
+  ul li a {
+    transition: color 0.2s ease;
+  }
+}
+
+// Footer refinement
+footer.sticky-bottom {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }

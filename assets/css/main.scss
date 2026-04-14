@@ -6,6 +6,13 @@
 // Dimensions
 $max-content-width: {{ site.max_width }};
 
+// Apple-inspired font stack
+body {
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @import
   "variables",
   "themes",
