@@ -410,7 +410,7 @@ permalink: /posts/rl-rag-dual-city/
                 </div>
 
                 <div class="formula-block text-black">
-                    $$\mathcal{J}_{PPO}(\theta) = \mathbb{E} \left[ \sum_{t=1}^{|y|} \textcolor{red}{\mathbb{I}(y_t)} \min \left( \frac{\pi_\theta(y_t | x, y_{<t}; \mathcal{R})}{\pi_{old}(y_t | x, y_{<t}; \mathcal{R})} \hat{A}_t, \text{clip}(\dots) \right) \right]$$
+                    $$\mathcal{J}_{PPO}(\theta) = \mathbb{E} \left[ \sum_{t=1}^{|y|} \textcolor{red}{\mathbb{I}(y_t)} \min \left( \frac{\pi_\theta(y_t | x, y_{&lt;t}; \mathcal{R})}{\pi_{old}(y_t | x, y_{&lt;t}; \mathcal{R})} \hat{A}_t, \text{clip}(\dots) \right) \right]$$
                 </div>
                 <p class="text-gray-300 mt-6 mb-4 text-center text-lg">其中 $\textcolor{red}{\mathbb{I}(y_t)}$ 就是核心的掩码函数：</p>
                 <div class="formula-block text-black">
