@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
+        },{id: "nav-teaching",
+          title: "teaching",
+          description: "Teaching assistant experience at the University of Illinois at Chicago.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/teaching/";
+          },
         },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
