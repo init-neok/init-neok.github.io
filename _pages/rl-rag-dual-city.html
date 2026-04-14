@@ -1,0 +1,705 @@
+---
+layout: none
+permalink: /blog/2025/rl-rag-dual-city/
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R1-Searcher vs Search-R1: RL-RAG 双城记</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --apple-bg: #f5f5f7;
+            --apple-text: #1d1d1f;
+            --apple-blue: #0066cc;
+            --apple-purple: #8e44ad;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background-color: var(--apple-bg);
+            color: var(--apple-text);
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #e8e8ed 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03rem;
+            line-height: 1.2;
+        }
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .compare-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card-ruc { border-top: 4px solid var(--apple-blue); }
+        .card-uiuc { border-top: 4px solid var(--apple-purple); }
+
+        .formula-block {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+        .apple-table th { background-color: #f9f9fb; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em;}
+        .apple-table td, .apple-table th { padding: 1rem; border-bottom: 1px solid #eaeaea; }
+        .apple-table tr:last-child td { border-bottom: none; }
+
+        .katex { white-space: nowrap; }
+        .katex-display { margin: 0 !important; }
+
+        .ai-gradient-text {
+            background: linear-gradient(90deg, #8e44ad, #0066cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ai-btn {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border: 1px solid #e0e0e0;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        .ai-btn:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Back button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .back-btn:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+            transform: translateY(-1px);
+            text-decoration: none;
+            color: #0066cc;
+        }
+
+        /* Chat Widget */
+        #chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        #chat-window {
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            transform-origin: bottom right;
+            animation: popIn 0.3s ease forwards;
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .chat-header {
+            background: linear-gradient(135deg, #8e44ad, #0066cc);
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9fb;
+            font-size: 0.9rem;
+        }
+        .chat-input-area {
+            display: flex;
+            padding: 10px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .chat-input-area input:focus { border-color: #0066cc; }
+        .chat-input-area button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .msg-bubble { padding: 10px 15px; border-radius: 15px; margin-bottom: 10px; line-height: 1.4; }
+        .msg-user { background: #0066cc; color: white; border-bottom-right-radius: 5px; margin-left: auto; width: fit-content; max-width: 85%; }
+        .msg-ai { background: white; border: 1px solid #eee; color: #333; border-bottom-left-radius: 5px; width: fit-content; max-width: 85%; }
+        .typing-indicator { display: inline-block; padding: 10px 15px; background: white; border: 1px solid #eee; border-radius: 15px; margin-bottom: 10px; font-style: italic; color: #888; font-size: 0.8rem; }
+
+        #ai-explanation-box {
+            display: none;
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            border-left: 4px solid #8e44ad;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #444;
+            animation: slideDown 0.3s ease forwards;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Back to Blog -->
+    <a href="/blog/" class="back-btn">
+        ← 返回博客
+    </a>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card" style="border-top: none; border-radius: 0;">
+        <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+            <div class="font-bold text-xl tracking-tight">RL 🤝 RAG</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium opacity-70">
+                <a href="#overview" class="hover:text-blue-600 transition">定位概览</a>
+                <a href="#motivation" class="hover:text-blue-600 transition">研究动机</a>
+                <a href="#methodology" class="hover:text-blue-600 transition">方法与公式</a>
+                <a href="#experiments" class="hover:text-blue-600 transition">实验对比</a>
+                <a href="#review" class="hover:text-blue-600 transition">深度结论</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="overview" class="pt-32 pb-20 px-6 hero-gradient text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="inline-block py-1 px-3 rounded-full bg-black text-white text-xs font-semibold tracking-wider uppercase mb-6">Concurrent Works</span>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">大模型自主搜索的黎明</h1>
+            <p class="text-xl opacity-60 leading-relaxed mb-10 max-w-3xl mx-auto">
+                2025年3月，两篇重量级论文同时发布。虽然名字惊人地相似，但它们的核心侧重点截然不同：<br>
+                <span class="font-semibold text-purple-600">Search-R1</span> 是"通用框架型"研究，<span class="font-semibold text-blue-600">R1-Searcher</span> 是"能力塑造型"研究。
+            </p>
+        </div>
+    </section>
+
+    <!-- Overall Positioning Table -->
+    <section class="max-w-7xl mx-auto px-6 -mt-10 relative z-10">
+        <div class="glass-card rounded-3xl overflow-hidden">
+            <div class="p-6 bg-gray-50 border-b border-gray-100">
+                <h2 class="text-2xl font-bold">一图看懂：两篇论文的本质差别</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse apple-table">
+                    <thead>
+                        <tr>
+                            <th class="w-1/6">对比维度</th>
+                            <th class="w-5/12 text-purple-600">Search-R1 (UIUC/Google)</th>
+                            <th class="w-5/12 text-blue-600">R1-Searcher (RUC)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr>
+                            <td class="font-medium text-gray-500">核心问题</td>
+                            <td>如何把"搜索 + 推理"统一进 RL 框架</td>
+                            <td>如何显式激励模型学会搜索</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">论文气质</td>
+                            <td>框架化、方法论化</td>
+                            <td>训练技巧化、能力塑形化</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">训练逻辑</td>
+                            <td>单阶段 outcome-based RL 为主</td>
+                            <td>两阶段 RL，先学会搜，再学会用搜到的信息答题</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">主要 RL 算法</td>
+                            <td>PPO / GRPO</td>
+                            <td>改造后的 Reinforce++，并分析 GRPO</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">奖励设计</td>
+                            <td>很简单，主要看最终答案是否正确（EM）</td>
+                            <td>分阶段奖励：先 retrieval reward，再 answer reward（F1）</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">任务覆盖</td>
+                            <td>一般 QA + 多跳 QA，共 7 个数据集</td>
+                            <td>更聚焦多跳 QA，共 4 个数据集</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">强调的创新</td>
+                            <td>"search engine as environment" 的 RL formulation + retrieved token masking</td>
+                            <td>"search capability" 的显式激励 + 两阶段训练课程</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">最终风格</td>
+                            <td class="font-bold">更像 Search-augmented RL framework</td>
+                            <td class="font-bold">更像 RL-trained search agent recipe</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivation Section -->
+    <section id="motivation" class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="section-title text-center mb-16">动机对比：它们到底各自在解决什么问题？</h2>
+        <div class="compare-grid">
+            <div class="bg-purple-50 rounded-3xl p-8 border border-purple-100">
+                <h3 class="text-2xl font-bold text-purple-700 mb-4">Search-R1：建立通用范式</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">现有方法要么只是在输入后检索一次，要么让模型"看起来会搜"（Tool-use）但没在训练中真正学会。作者旨在解决：</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>搜索行为怎样纳入 RL rollout？</li>
+                    <li>多轮检索与推理怎样交替进行？</li>
+                    <li>只靠 outcome reward 是否足够学出该能力？</li>
+                    <li>引入检索文本后，RL 如何保持稳定？</li>
+                </ul>
+                <p class="mt-4 font-semibold text-purple-900">👉 问题意识更偏"框架与优化"</p>
+            </div>
+
+            <div class="bg-blue-50 rounded-3xl p-8 border border-blue-100">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">R1-Searcher：专攻能力塑造</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">现有 LRM 依赖内部知识导致幻觉，而已有方法泛化不足或成本高。作者旨在解决：</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>怎么让模型主动意识到自己该搜？</li>
+                    <li>怎么让模型先掌握"搜索调用格式"和"习惯"？</li>
+                    <li>怎么不用 SFT cold start，仅靠 RL 就练出能力？</li>
+                </ul>
+                <p class="mt-4 font-semibold text-blue-900">👉 问题意识更偏"能力激励与行为塑造"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology & Formula Section -->
+    <section id="methodology" class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="section-title text-center mb-16">方法流程：交替生成与 The Golden Trick</h2>
+
+            <div class="compare-grid mb-16">
+                <!-- Search-R1 Flow -->
+                <div class="p-8 border rounded-3xl border-gray-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-center mb-6 text-purple-600">Search-R1 流程</h3>
+                    <div class="flex flex-col items-center space-y-3 font-mono text-sm">
+                        <div class="bg-gray-100 px-4 py-2 rounded-lg w-full text-center">问题 $x$</div>
+                        <div>↓</div>
+                        <div class="bg-white border border-gray-300 px-4 py-2 rounded-lg w-full text-center text-gray-600">&lt;think&gt; 推理</div>
+                        <div>↓</div>
+                        <div class="text-xs text-gray-400">若需要外部知识</div>
+                        <div>↓</div>
+                        <div class="bg-purple-100 border border-purple-300 px-4 py-2 rounded-lg w-full text-center text-purple-800">&lt;search&gt; query &lt;/search&gt;</div>
+                        <div>↓</div>
+                        <div class="bg-green-100 border border-green-300 px-4 py-2 rounded-lg w-full text-center text-green-800">&lt;information&gt; docs &lt;/information&gt;</div>
+                        <div>↓</div>
+                        <div class="bg-white border border-gray-300 px-4 py-2 rounded-lg w-full text-center text-gray-600">继续 &lt;think&gt;</div>
+                        <div>↓</div>
+                        <div class="bg-blue-100 border border-blue-300 px-4 py-2 rounded-lg w-full text-center text-blue-800">&lt;answer&gt; final answer &lt;/answer&gt;</div>
+                    </div>
+                </div>
+
+                <!-- R1-Searcher Flow -->
+                <div class="p-8 border rounded-3xl border-gray-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-center mb-6 text-blue-600">R1-Searcher 流程</h3>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <h4 class="font-bold text-blue-800 mb-2">Stage 1: 学会"会搜、按格式搜"</h4>
+                            <p class="text-xs text-gray-600 mb-2">鼓励模型发起检索。只看格式和动作，不看答案对错。</p>
+                            <span class="inline-block bg-white border border-blue-200 text-blue-600 text-xs px-2 py-1 rounded font-mono">retrieval reward + format reward</span>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                            <h4 class="font-bold text-green-800 mb-2">Stage 2: 学会"搜得对、用得对"</h4>
+                            <p class="text-xs text-gray-600 mb-2">继续推理 + 检索，但关注最终答案是否准确。</p>
+                            <span class="inline-block bg-white border border-green-200 text-green-600 text-xs px-2 py-1 rounded font-mono">answer reward(F1) + format penalty</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Golden Trick & Formula -->
+            <div class="bg-gray-900 rounded-[2.5rem] p-10 md:p-14 shadow-2xl text-white relative">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-yellow-400 text-black p-3 rounded-2xl">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold">The Golden Trick: 检索内容 Loss 掩码</h3>
+                            <p class="text-gray-400 mt-1">两篇论文同时发现的核心秘密（Retrieved Tokens Loss Masking）</p>
+                        </div>
+                    </div>
+                    <button onclick="explainFormula()" class="ai-btn px-4 py-2 rounded-full font-bold flex items-center gap-2 text-sm">
+                        <span class="text-xl">✨</span> AI 极简解释
+                    </button>
+                </div>
+
+                <p class="text-gray-300 leading-relaxed mb-8 text-lg">
+                    在强化学习计算梯度时，必须将外部搜索引擎返回的文本排除在外。如果不 Mask，模型会尝试去"预测"维基百科的内容，导致极其不稳定的优化（Reward Hacking 或崩溃）。<br>
+                    <span class="font-semibold text-yellow-400">Search-R1 中的 PPO 目标函数清晰地表达了这一思想：</span>
+                </p>
+
+                <div id="ai-explanation-box">
+                    <strong>✨ Gemini AI：</strong>
+                    <div id="ai-explanation-content" class="mt-2">正在生成解释...</div>
+                </div>
+
+                <div class="formula-block text-black">
+                    $$\mathcal{J}_{PPO}(\theta) = \mathbb{E} \left[ \sum_{t=1}^{|y|} \textcolor{red}{\mathbb{I}(y_t)} \min \left( \frac{\pi_\theta(y_t | x, y_{<t}; \mathcal{R})}{\pi_{old}(y_t | x, y_{<t}; \mathcal{R})} \hat{A}_t, \text{clip}(\dots) \right) \right]$$
+                </div>
+                <p class="text-gray-300 mt-6 mb-4 text-center text-lg">其中 $\textcolor{red}{\mathbb{I}(y_t)}$ 就是核心的掩码函数：</p>
+                <div class="formula-block text-black">
+                    $$\mathbb{I}(y_t) = \begin{cases} 1, & \text{如果 } y_t \text{ 是 LLM 生成的 Token} \\ 0, & \text{如果 } y_t \text{ 是检索返回的文档 Token} \end{cases}$$
+                </div>
+                <p class="text-sm font-semibold text-gray-400 mt-6 text-center">💡 两篇论文通过消融实验一致证明：没有这个 Mask，模型性能会大幅下降或训练崩溃。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiments Section -->
+    <section id="experiments" class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="section-title text-center mb-16">实验设置：谁测得广？谁测得深？</h2>
+        <div class="glass-card rounded-3xl overflow-hidden mb-12">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse apple-table">
+                    <thead>
+                        <tr>
+                            <th class="w-1/6">维度</th>
+                            <th class="w-5/12 text-purple-600">Search-R1</th>
+                            <th class="w-5/12 text-blue-600">R1-Searcher</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr>
+                            <td class="font-medium text-gray-500">训练数据</td>
+                            <td>NQ + HotpotQA 合并</td>
+                            <td>HotpotQA + 2Wiki，且做 difficulty 选择</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">测试数据</td>
+                            <td>NQ, TriviaQA, PopQA, HotpotQA, 2Wiki, Musique, Bamboogle</td>
+                            <td>HotpotQA, 2Wiki, Musique, Bamboogle</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">任务类型</td>
+                            <td>一般 QA + 多跳 QA</td>
+                            <td>以多跳 QA 为核心</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">测试模型</td>
+                            <td>Qwen2.5-3B/7B Base/Instruct，附带 14B 扩展</td>
+                            <td>Qwen2.5-7B-Base, Llama-3.1-8B-Instruct</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">检索系统</td>
+                            <td>2018 Wikipedia + E5；默认 top-3 passages</td>
+                            <td>KILT 2019 Wikipedia + BGE-large-en-v1.5；最大检索 8 次</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">核心指标</td>
+                            <td>EM (Exact Match)</td>
+                            <td>CEM + LLM-as-Judge</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-500">Online Search?</td>
+                            <td>主要是本地检索环境</td>
+                            <td>专门测了在线 Google API 搜索泛化</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-8 rounded-3xl">
+                <h4 class="font-bold text-lg mb-3">Search-R1 实验特点：严谨控制</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    覆盖面广、控制严。不仅测了多跳，还有 General QA。统一设置 same retriever / same corpus / same training data / same pre-trained LLM 做公平比较。不仅和 RAG 比，还和 SFT、R1、rejection sampling 比。<br><br>
+                    <strong>主结果：</strong> 相比 RAG 基线，Qwen2.5-7B 平均相对提升 24%。它更像一篇"完整 benchmark + method validation paper"。
+                </p>
+            </div>
+            <div class="bg-gray-50 p-8 rounded-3xl">
+                <h4 class="font-bold text-lg mb-3">R1-Searcher 实验特点：能力验证</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    行为分析更强、工程味更重。不只是主结果，还分析了 RL vs SFT、不同 answer reward (F1 > EM)、数据难度分布、数据多样性等训练配方细节。还额外测试了在线搜索场景。<br><br>
+                    <strong>主结果：</strong> 在 Bamboogle 上切到 online search 后，比本地检索还能继续提升，且比 Search-o1 32B 更强。它更像一篇"训练 recipe + behavior study paper"。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review & Conclusions Section -->
+    <section id="review" class="py-24 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-title">最终结论：各自证明了什么？</h2>
+            </div>
+
+            <div class="space-y-12">
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 relative">
+                    <div class="absolute -left-4 top-10 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                    <h3 class="text-2xl font-bold text-purple-700 mb-4 ml-6">Search-R1：建立稳健的强化学习范式</h3>
+                    <ul class="list-disc list-inside space-y-3 text-gray-700 ml-6 text-lg">
+                        <li>search engine 可以被正式并稳定地纳入 RL rollout。</li>
+                        <li>只用 outcome reward 也能学出有效的 search-and-reasoning。</li>
+                        <li>retrieved token masking 是关键稳定因素。</li>
+                        <li>PPO 和 GRPO 都可行，但 <span class="font-semibold text-purple-600">PPO 更稳定</span>。</li>
+                    </ul>
+                    <p class="mt-6 ml-6 font-bold text-gray-900 border-l-4 border-purple-500 pl-4 py-2 bg-purple-50">
+                        核心定调："search-augmented RL 是成立的，而且是可训练、可泛化、可分析的。"
+                    </p>
+                </div>
+
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 relative">
+                    <div class="absolute -left-4 top-10 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                    <h3 class="text-2xl font-bold text-blue-700 mb-4 ml-6">R1-Searcher：打造自主搜索 Agent 的实战指南</h3>
+                    <ul class="list-disc list-inside space-y-3 text-gray-700 ml-6 text-lg">
+                        <li>仅靠 RL（无 distillation/SFT cold start），也能把搜索能力学出来。</li>
+                        <li>两阶段奖励设计有效；F1 比 EM/CEM 更适合 answer reward。</li>
+                        <li>数据难度和数据多样性会显著影响 search behavior 的形成。</li>
+                        <li>学到的能力可以无缝迁移到 <span class="font-semibold text-blue-600">Online Search</span>。</li>
+                    </ul>
+                    <p class="mt-6 ml-6 font-bold text-gray-900 border-l-4 border-blue-500 pl-4 py-2 bg-blue-50">
+                        核心定调："如果你真想把模型训成会搜的 agent，奖励设计和训练课程很关键。"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Final Takeaway -->
+            <div class="mt-20 text-center">
+                <h3 class="text-3xl font-bold mb-6">💡 研究者视角的最终判断</h3>
+                <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                    如果你想写 Related Work 或 Method Comparison，<span class="font-bold text-purple-600">Search-R1 更"规范"</span>，它是框架型代表。<br><br>
+                    如果你想亲手复现或进行后续开发，<span class="font-bold text-blue-600">R1-Searcher 更"有手感"</span>，它提供了大量的实操踩坑经验（为何不搜、为何设阶段奖励等）。<br><br>
+                    <strong>不要直接比较谁的榜单分数更高，它们在用不同的方式，共同推开了大模型自主检索时代的大门。</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-sm opacity-50 bg-white border-t border-gray-100">
+        <p>© 2025 Kening Zheng • <a href="/blog/" class="underline">返回博客</a></p>
+        <p class="mt-2">Based on arXiv:2503.05592 (R1-Searcher) and arXiv:2503.09516 (Search-R1)</p>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="chat-widget">
+        <div id="chat-window">
+            <div class="chat-header">
+                <span>✨ 学术问答助手</span>
+                <button onclick="toggleChat()" style="background:none;border:none;color:white;cursor:pointer;font-weight:bold;">✕</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="msg-bubble msg-ai">你好！关于 <b>R1-Searcher</b> 和 <b>Search-R1</b> 这两篇 RL-RAG 论文，有什么我可以帮你的吗？</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="输入您的问题..." onkeypress="handleChatEnter(event)">
+                <button onclick="sendMessage()">发送</button>
+            </div>
+        </div>
+        <button id="chat-toggle-btn" onclick="toggleChat()" class="p-4 rounded-full shadow-lg font-bold text-lg mt-4 flex items-center justify-center h-14 w-14" style="background: linear-gradient(135deg, #8e44ad, #0066cc); color: white; border: none; cursor: pointer;">
+            ✨
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false,
+                output: 'html'
+            });
+        });
+
+        // Fade-in Animation
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition', 'duration-1000', 'ease-out', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+
+        // Gemini API
+        const apiKey = "";
+
+        async function fetchGemini(prompt, systemInstructionText) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstructionText }] }
+            };
+
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let attempt = 0; attempt <= delays.length; attempt++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "抱歉，没有获取到有效回复。";
+                } catch (error) {
+                    if (attempt === delays.length) return "抱歉，API 暂时无响应，请稍后再试。";
+                    await new Promise(r => setTimeout(r, delays[attempt]));
+                }
+            }
+        }
+
+        let explanationFetched = false;
+        async function explainFormula() {
+            const explainBox = document.getElementById('ai-explanation-box');
+            const contentBox = document.getElementById('ai-explanation-content');
+            if (explainBox.style.display === 'block') {
+                explainBox.style.display = 'none';
+                return;
+            }
+            explainBox.style.display = 'block';
+            if (explanationFetched) return;
+            contentBox.innerHTML = '<i>正在思考... ✨</i>';
+            const systemPrompt = "你是一个擅长将复杂的AI学术概念解释给初学者的专家。";
+            const userPrompt = "请用通俗易懂的'大白话'（最好包含恰当的生活比喻），解释强化学习中的'检索内容Loss掩码（Retrieved Tokens Loss Masking）'是什么，以及为什么不加这个掩码会导致模型训练崩溃。字数控制在150字左右，排版清晰。";
+            const reply = await fetchGemini(userPrompt, systemPrompt);
+            contentBox.innerHTML = reply.replace(/\n/g, '<br>');
+            explanationFetched = true;
+        }
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            const toggleBtn = document.getElementById('chat-toggle-btn');
+            if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+                chatWindow.style.display = 'flex';
+                toggleBtn.style.display = 'none';
+            } else {
+                chatWindow.style.display = 'none';
+                toggleBtn.style.display = 'flex';
+            }
+        }
+
+        function handleChatEnter(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        async function sendMessage() {
+            const inputField = document.getElementById('chat-input');
+            const message = inputField.value.trim();
+            if (!message) return;
+            appendMessage(message, 'user');
+            inputField.value = '';
+            const typingId = showTypingIndicator();
+            const systemPrompt = `你是一个专业的AI学术助手。当前网页深入对比了两篇2025年发表的大模型检索增强强化学习（RL-RAG）论文：
+            1. R1-Searcher (中国人民大学/DataCanvas提出): 强调两阶段RL、使用Format Reward教模型学会搜索标签、分析数据难度，算法偏好Reinforce++。
+            2. Search-R1 (UIUC/UMass/Google提出): 强调把搜索作为环境纳入RL、对比了PPO和GRPO并发现PPO更稳定，通过提示词模板而非阶段奖励。
+            两者的共性是都使用了"检索内容Loss掩码(Retrieved Tokens Loss Masking)"。
+            请用专业、客观、简明扼要的中文回答用户关于这两篇论文或大模型相关的问题。`;
+            const reply = await fetchGemini(message, systemPrompt);
+            removeTypingIndicator(typingId);
+            appendMessage(reply, 'ai');
+        }
+
+        function appendMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `msg-bubble msg-${sender}`;
+            msgDiv.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+            const chatBox = document.getElementById('chat-messages');
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const id = 'typing-' + Date.now();
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'typing-indicator';
+            msgDiv.id = id;
+            msgDiv.innerHTML = '✨ 助手正在思考...';
+            const chatBox = document.getElementById('chat-messages');
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return id;
+        }
+
+        function removeTypingIndicator(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+    </script>
+</body>
+</html>
