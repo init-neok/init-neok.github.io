@@ -1,3 +1,16 @@
+@article{zheng2026eaver,
+  abbr      = {arXiv},
+  title     = {EAVer: Long-Form Factuality Verification as an End-to-End Agentic Policy},
+  author    = {Zheng, Kening and Zheng, Aoying and Chang, Zhigang and Guo, Yazhi and Guo, Miaotian and Zong, Qingwei and Xie, Xianhai and Jin, Weiqiang and Li, Chengze and Zhang, Hanrong and Yang, Jie and Huang, Wei-Chieh and Zhang, Lingzhe and Fang, Liancheng and Zou, Xin and Li, Hanqian and Huo, Jiahao and Yan, Yibo and Deng, Zizhuang and Miao, Lei and Guo, Wei and Tang, Haihong and Zheng, Bo and Yu, Philip S.},
+  abstract  = {Long-form factuality verification is commonly implemented as a static decompose-search-verify pipeline, with separately prompted modules processing claims and invoking external search. We introduce EAVer, an End-to-end Agentic Verifier that learns to control the complete response-level verification workflow as a unified policy. EAVer groups semantically related claims, routes each group to direct verification or targeted search based on confidence, and keeps evidence returned by search in compact in-context memos for cross-claim reuse. To train this policy, we develop a privileged-teacher synthesis pipeline that yields 1,447 quality-controlled multi-turn tool-interaction trajectories, and construct 794 same-trajectory preference pairs for decision-focused DPO. With Qwen3-8B, EAVer outperforms the strongest search-based baseline by 2.88 Macro-F1 points on VeriFastScore and 4.73 points on the out-of-distribution FaStFact-Bench, while using about 80% fewer searches than the most search-efficient baseline, and generalizes across models from 4B to 32B parameters.},
+  journal   = {arXiv preprint arXiv:2609.22223},
+  year      = {2026},
+  arxiv     = {2609.22223},
+  url       = {https://arxiv.org/abs/2609.22223},
+  pdf       = {https://arxiv.org/pdf/2609.22223},
+  selected  = {true}
+}
+
 @inproceedings{zheng2026rise,
   abbr      = {EMNLP-Findings},
   title     = {Unveiling Language Routing Isolation in Multilingual MoE Models for Interpretable Subnetwork Adaptation},

@@ -13,6 +13,7 @@ profile:
     <p></p>
     <p>Chicago, IL</p>
 
+experience: true # includes the experience section from _data/experience.yml
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
@@ -27,6 +28,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Ph.D. student in Computer Science at the University of Illinois at Chicago. My advisor is [Philip S. Yu](https://cs.uic.edu/profiles/philip-yu/). I collaborate closely with Prof. [Xuming Hu](https://xuminghu.github.io/) from the Hong Kong University of Science and Technology (Guangzhou). In summer 2026, I was a research intern at Alibaba.
+I am a Ph.D. student in Computer Science at the University of Illinois at Chicago. My advisor is [Philip S. Yu](https://cs.uic.edu/profiles/philip-yu/). I collaborate closely with Prof. [Xuming Hu](https://xuminghu.github.io/) from the Hong Kong University of Science and Technology (Guangzhou). I am currently a Research Scientist Intern at ByteDance, exploring large-scale agent systems for advertising optimization. Previously, I was a research intern on the Core Product Algorithm team at Alibaba Taobao & Tmall Group, where I developed [EAVer](https://arxiv.org/abs/2609.22223), an end-to-end agentic verifier for long-form factuality. My research focuses on building, training, and deploying LLM agents, with additional work on mixture-of-experts (MoE) interpretability and multimodal trustworthiness.
 
-Before that, I received my master's degree in 2025 from Xi'an Jiaotong University under supervision with Prof. [Yuan Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/3) and my bachelor's degree in 2022 from Yunnan University.
+Before that, I received my master's degree in 2025 from Xi'an Jiaotong University under supervision with Prof. [Yuan Rao](https://gr.xjtu.edu.cn/en/web/raoyuan/3) and my bachelor's degree in 2022 from Yunnan University. I also spent time at HKUST (Guangzhou) working on hallucination in multimodal large language models.

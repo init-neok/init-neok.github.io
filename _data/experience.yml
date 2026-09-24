@@ -1,0 +1,17 @@
+- role: Research Scientist Intern
+  company: ByteDance
+  logo: logos/bytedance.svg
+  location: San Jose, CA, USA
+  date: Sep 2026 — Present
+  description: Exploring large-scale agent systems for advertising optimization, with an initial focus on malicious advertiser detection.
+
+- role: Research Intern
+  company: Alibaba Taobao & Tmall Group
+  team: Core Product Algorithm Team
+  logo: logos/alibaba.svg
+  location: Beijing, China
+  date: Mar 2026 — Aug 2026
+  description: >
+    Developed <a href="https://arxiv.org/abs/2609.22223">EAVer</a>, an end-to-end agentic verifier for long-form factuality that unifies claim grouping,
+    confidence-guided search, and cross-claim evidence reuse (SFT + decision-focused DPO), using ~80% fewer searches than prior baselines.
+    Also worked on tens-of-millions-scale product data and deployment with engineering teams.

@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2026-06-01 09:00:00 -0500
+date: 2026-03-01 09:00:00 -0600
 inline: true
 related_posts: false
 ---
 
-I joined Alibaba as a research intern for summer 2026.
+I joined the Core Product Algorithm team at Alibaba Taobao & Tmall Group as a research intern.

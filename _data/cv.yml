@@ -19,14 +19,29 @@
       description:
         - Advisor&#58; Prof. Philip S. Yu
         - Co-advisor&#58; Prof. Xuming Hu (HKUST-Guangzhou)
-    - title: Master of Science in Computer Science
+    - title: M.Eng. in Software Engineering
       institution: Xi'an Jiaotong University, Xi'an, China
       year: 2022 - 2025
       description:
         - Advisor&#58; Prof. Yuan Rao
-    - title: Bachelor of Science in Computer Science
+    - title: B.Sc. in Mathematics and Computational Science
       institution: Yunnan University, Kunming, China
       year: 2018 - 2022
+
+- title: Industry Experience
+  type: time_table
+  contents:
+    - title: Research Scientist Intern
+      institution: ByteDance, San Jose, CA, USA
+      year: Sep 2026 - present
+      description:
+        - Large-scale agent systems for advertising optimization and malicious advertiser detection.
+    - title: Research Intern, Core Product Algorithm Team
+      institution: Alibaba Taobao &amp; Tmall Group, Beijing, China
+      year: Mar 2026 - Aug 2026
+      description:
+        - Developed EAVer, an end-to-end agentic verifier for long-form factuality (arXiv&#58;2609.22223).
+        - Worked on tens-of-millions-scale product data, deployment, and online evaluation.
 
 - title: Teaching Experience
   type: time_table

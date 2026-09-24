@@ -52,6 +52,35 @@ layout: default
       </section>
     {% endif %}
 
+    <!-- Experience -->
+    {% if page.experience and site.data.experience %}
+      <section class="reveal mt-5">
+        <h2 class="section-title mb-4">experience</h2>
+        {% for job in site.data.experience %}
+          <div class="glass-card experience-card p-4 mb-3">
+            {% if job.logo %}
+              <div class="experience-logo">
+                <img src="{{ job.logo | prepend: 'assets/img/' | relative_url }}" alt="{{ job.company }} logo" loading="lazy">
+              </div>
+            {% endif %}
+            <div class="experience-body">
+              <h3 class="experience-role">{{ job.role }}</h3>
+              <p class="experience-company">
+                {{ job.company }}{% if job.team %} · {{ job.team }}{% endif %}
+              </p>
+              <p class="experience-meta">
+                <span><i class="fa-solid fa-location-dot"></i> {{ job.location }}</span>
+                <span><i class="fa-regular fa-calendar"></i> {{ job.date }}</span>
+              </p>
+              {% if job.description %}
+                <p class="experience-desc">{{ job.description }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+    {% endif %}
+
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
       <section class="reveal mt-5">
