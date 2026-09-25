@@ -48,7 +48,7 @@ layout: default
     {% if page.announcements and page.announcements.enabled %}
       <section class="reveal mt-5">
         <h2 class="section-title mb-4">
-          <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+          <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
         </h2>
         <div class="glass-card p-4">
           {% include news.liquid limit=true %}
@@ -59,7 +59,7 @@ layout: default
     <!-- Experience -->
     {% if page.experience and site.data.experience %}
       <section class="reveal mt-5">
-        <h2 class="section-title mb-4">experience</h2>
+        <h2 class="section-title mb-4">Experience</h2>
         {% for job in site.data.experience %}
           <div class="glass-card experience-card p-4 mb-3">
             {% if job.logo %}
@@ -89,7 +89,7 @@ layout: default
     {% if page.latest_posts and page.latest_posts.enabled %}
       <section class="reveal mt-5">
         <h2 class="section-title mb-4">
-          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
         </h2>
         {% include latest_posts.liquid %}
       </section>
@@ -99,7 +99,7 @@ layout: default
     {% if page.selected_papers %}
       <section class="reveal mt-5">
         <h2 class="section-title mb-4">
-          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
         </h2>
         {% include selected_papers.liquid %}
       </section>
