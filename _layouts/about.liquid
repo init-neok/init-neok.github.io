@@ -2,16 +2,20 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
+  <header class="about-hero">
+    <div class="about-hero-text">
+      <h1 class="about-hero-name">
+        {% if site.title == 'blank' %}
+          {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </h1>
+      {% if site.cn_name %}
+        <p class="about-hero-cn" lang="zh-CN">{{ site.cn_name }}</p>
       {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
+      <p class="about-hero-desc">{{ page.subtitle }}</p>
+    </div>
   </header>
 
   <article>

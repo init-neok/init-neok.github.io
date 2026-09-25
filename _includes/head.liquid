@@ -30,6 +30,9 @@
   type="text/css"
   href="{{ site.third_party_libraries.google_fonts.url.fonts }}"
 >
+{% if page.permalink == '/' and site.cn_name %}
+  <link rel="stylesheet" type="text/css" href="{{ site.third_party_libraries.google_fonts.url.cn_name_font }}">
+{% endif %}
 
 <!-- Code Syntax Highlighting -->
 <link
