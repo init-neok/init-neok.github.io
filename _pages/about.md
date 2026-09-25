@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: <a href='https://www.uic.edu/'>University of Illinois, Chicago</a>. 801 S. Morgan St., Chicago, IL, 60607.
 

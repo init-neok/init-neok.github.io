@@ -1666,27 +1666,80 @@ footer.sticky-bottom {
   }
 }
 
-// Update post header with hero styling
+// Page header — same theme-aware style as the homepage hero (no fixed-color card)
 .post-header {
-  padding: 5rem 0 3rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(
-    135deg,
-    var(--global-card-bg-color) 0%,
-    color-mix(in srgb, var(--global-card-bg-color) 40%, transparent) 100%
-  );
-  border-radius: 0 0 2rem 2rem;
+  position: relative;
+  isolation: isolate;
+  padding: 4rem 0 2rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0.5rem auto auto -2rem;
+    width: min(380px, 80%);
+    height: 200px;
+    background: radial-gradient(
+      closest-side,
+      color-mix(in srgb, var(--global-theme-color) 14%, transparent),
+      transparent
+    );
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: -1;
+  }
 
   .post-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 3.25rem);
     font-weight: 700;
-    letter-spacing: -0.03rem;
+    letter-spacing: -0.03em;
     line-height: 1.1;
+    color: var(--global-text-color);
+    animation: about-hero-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .post-description {
-    font-size: 1.2rem;
-    opacity: 0.6;
+    margin: 0.75rem 0 0;
+    font-size: 1.05rem;
+    color: var(--global-text-color-light);
+  }
+
+  @media (max-width: 575.98px) {
+    padding: 2.75rem 0 1.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-title {
+      animation: none;
+    }
+  }
+}
+
+// Teaching cards
+.teaching-card {
+  .teaching-term {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    margin-bottom: 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--global-theme-color);
+    background: color-mix(in srgb, var(--global-theme-color) 12%, transparent);
+  }
+
+  .teaching-course {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.2rem;
+  }
+
+  .teaching-role {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--global-text-color-light);
   }
 }
 
