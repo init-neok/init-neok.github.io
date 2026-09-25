@@ -1864,3 +1864,129 @@ footer.sticky-bottom {
     transform: none;
   }
 }
+
+// -----------------------------------------------------------------------------
+// Mobile tuning (phones ≤ 575.98px, touch devices)
+// -----------------------------------------------------------------------------
+@media (max-width: 575.98px) {
+  // Collapsed navbar menu: full-width rows with comfortable tap targets
+  .navbar .navbar-collapse {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--global-divider-color);
+  }
+
+  .navbar.navbar-light .navbar-nav {
+    align-items: stretch;
+    gap: 0.15rem;
+
+    .nav-item .nav-link {
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      text-align: left;
+
+      &:hover,
+      &:focus-visible {
+        transform: none;
+      }
+    }
+
+    .nav-item.active > .nav-link {
+      background-color: color-mix(in srgb, var(--global-theme-color) 10%, transparent);
+    }
+
+    .toggle-container {
+      display: flex;
+      justify-content: flex-start;
+      padding: 0.35rem 0.6rem;
+    }
+  }
+
+  // Section headings
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  // Profile photo: centered and capped instead of full-width
+  .profile.float-right,
+  .profile.float-left {
+    float: none !important;
+    width: 72%;
+    max-width: 280px;
+    margin: 0 auto 1.5rem;
+  }
+
+  // Cards: lighter padding so text gets the width
+  .glass-card.p-4 {
+    padding: 1rem !important;
+    border-radius: 18px;
+  }
+
+  .news {
+    padding: 0.25rem;
+    background: transparent;
+
+    .table-responsive {
+      max-height: 26rem !important;
+    }
+
+    // Stack date above the text instead of a squeezed 20% column
+    table,
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+      width: 100% !important;
+    }
+
+    tr {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--global-divider-color);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    th {
+      padding: 0 0 0.2rem !important;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--global-text-color-light);
+    }
+
+    td {
+      padding: 0 !important;
+      line-height: 1.55;
+    }
+  }
+
+  .experience-card {
+    .experience-meta span {
+      display: block;
+
+      & + span {
+        margin-left: 0;
+        margin-top: 0.15rem;
+      }
+    }
+  }
+
+  // Long URLs / titles should wrap rather than push the page sideways
+  .post article,
+  .publications {
+    overflow-wrap: anywhere;
+  }
+}
+
+// Touch screens: no sticky hover lift
+@media (hover: none) {
+  .glass-card:hover,
+  .post-list li:hover,
+  .navbar-brand.social:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  }
+}
